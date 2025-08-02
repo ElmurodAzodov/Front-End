@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Responsive Navbar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-light: #ffffff;
+        --bg-dark: #1f2937;
+        --text-light: #1f2937;
+        --text-dark: #f3f4f6;
+        --accent: #3b82f6;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.light {
+        background-color: var(--bg-light);
+        color: var(--text-light);
+      }
+
+      body.dark {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: inherit;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .logo {
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .nav-center,
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        color: var(--accent);
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 2.5rem;
+        right: 0;
+        background-color: inherit;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: none;
+        flex-direction: column;
+        min-width: 150px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: flex;
+      }
+
+      .dropdown-content a {
+        padding: 0.75rem 1rem;
+        white-space: nowrap;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid #ccc;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .nav-center,
+        .nav-right {
+          display: none;
+          flex-direction: column;
+          background-color: inherit;
+          width: 100%;
+          padding: 1rem 0;
+        }
+
+        nav.open .nav-center,
+        nav.open .nav-right {
+          display: flex;
+          animation: fadeIn 0.3s ease;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-header {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+        }
+
+        .dropdown-content {
+          position: static;
+          box-shadow: none;
+          border: none;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="light">
+    <nav id="navbar">
+      <div class="nav-header">
+        <div class="logo">MySite</div>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
+      </div>
+
+      <div class="nav-center">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="dropdown">
+          <a href="#">More ▾</a>
+          <div class="dropdown-content">
+            <a href="#">Contact</a>
+            <a href="#">Support</a>
+            <a href="#">Careers</a>
+          </div>
+        </div>
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+      </div>
+    </nav>
+
+    <script>
+      const navbar = document.getElementById("navbar");
+      const menuToggle = document.getElementById("menuToggle");
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("open");
+      });
+
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        body.classList.toggle("light");
+        themeToggle.textContent = body.classList.contains("dark")
+          ? "Light"
+          : "Dark";
+      });
+    </script>
+  </body>
+</html>

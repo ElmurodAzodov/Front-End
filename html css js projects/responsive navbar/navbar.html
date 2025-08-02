@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Responsive Navbar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="navbar.css" />
+  </head>
+  <body class="light">
+
+    
+    <nav id="navbar">
+      <div class="nav-header">
+        <div class="logo">MySite</div>
+        <div class="menu-toggle" id="menuToggle">&#9776;</div>
+      </div>
+
+      <div class="nav-center">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="dropdown">
+          <a href="#">More ▾</a>
+          <div class="dropdown-content">
+            <a href="#">Contact</a>
+            <a href="#">Support</a>
+            <a href="#">Careers</a>
+          </div>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+          <i class="ri-sun-line" id="themeIcon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <script src="navbar.js"></script>
+  </body>
+</html>
